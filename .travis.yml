@@ -2,7 +2,7 @@
 os:
   - linux
 # bahasa
-languague: php
+language: php
 # distro
 dist: trusty
 php: 
@@ -26,7 +26,7 @@ jobs:
     - stage: "Build Docker Image"
       name: "Build Images Docker"
       script:
-      - echo "$DOCKER_PASSWORD" | dockere login -u "$DOCKER_USERNAME" --password-stdin
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t travis-ci-build-stages-demo .
       - docker images
       - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/cicd-laravel
