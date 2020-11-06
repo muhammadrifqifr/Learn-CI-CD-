@@ -1,5 +1,5 @@
 FROM '123majumundur/php-7.1-nginx:cicd'
-LABEL maintaner-"muhammadrifqifr99@gmail.com"
+LABEL maintainer-"muhammadrifqifr99@gmail.com"
 
 # install prestissimo for faster deps installation
 RUN composer global require hirak/prestissimo
