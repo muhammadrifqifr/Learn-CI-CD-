@@ -1,22 +1,24 @@
 FROM '123majumundur/php-7.1-nginx:cicd'
 MAINTAINER rifqi <muhammadrifqifr99@gmail.com>
 
-# install prestissimo for faster deps installation
+#install prestissimo from faster deps instalation
 RUN composer global require hirak/prestissimo
 
-# make directory for hosting app
+#make directory from hosting the apps
 RUN mkdir /home/app/app
 WORKDIR /home/app/app
 
-# install dependencies
+#install dependencies
 COPY composer.json composer.json
 RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /home/app/.composer
 
-# copy codebase
+#copy database
 COPY --chown=app:root . ./
 
+
+
 #finish composer
-# RUN composere dump-autoload
-RUN composer dump.autoload --no-scripts --no-dev --optimize
+#run composer dump-autoload
+RUN composer dump-autoload --no-scripts --no-dev --optimize
 
 EXPOSE 8080
